@@ -3,7 +3,7 @@ import Phaser from 'phaser';
 const physicsObj = {
   default: 'arcade',
   arcade: {
-    debug: false,
+    debug: true,
     fixedStep: true,
   },
 };

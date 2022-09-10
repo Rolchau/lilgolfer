@@ -1,24 +1,21 @@
-import Phaser from 'phaser';
+import Phaser from 'phaser'; import TextureKeys from '../constants/TextureKeys';
 
 export default class Demo extends Phaser.Scene {
   constructor() {
     super('GameScene');
   }
 
-  preload() {
-    this.load.image('logo', 'assets/phaser3-logo.png');
-  }
-
   create() {
-    const logo = this.add.image(400, 70, 'logo');
+    const map = this.make.tilemap({ key: 'level-1' });
+    const tileSet = map.addTilesetImage('walls', TextureKeys.Tiles);
+    const wallsLayer = map.createLayer(0, tileSet, 0, 0);
+    wallsLayer.setCollisionByProperty({ collides: true });
 
-    this.tweens.add({
-      targets: logo,
-      y: 350,
-      duration: 1500,
-      ease: 'Sine.inOut',
-      yoyo: true,
-      repeat: -1
+    const debugGraphics = this.add.graphics().setAlpha(0.7);
+    wallsLayer.renderDebug(debugGraphics, {
+      tileColor: null,
+      collidingTileColor: new Phaser.Display.Color(243, 234, 48, 255),
+      faceColor: new Phaser.Display.Color(40, 39, 37, 255)
     });
   }
 }
