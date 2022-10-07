@@ -20,7 +20,7 @@
     },
     "openFiles": [
     ],
-    "project": "",
+    "project": "golfer-tile-map.tiled-project",
     "recentFiles": [
         "tiles.tsx",
         "levels.tmx"
